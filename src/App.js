@@ -1,36 +1,40 @@
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
+import React,{Component} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
+import ItemTable from './components/ItemTable';
+import NewForm from './components/NewForm';
 class App extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-          items: []
-        };
+    constructor(props){
+     super(props);
+     this.state = {
+         items: []
+      };
     }
     componentDidMount(){
-        axios.get('http://localhost:3000/api/item')
-            .then(res =>{
-                this.setState({items: res.data});
-                console.log(res);
-            }).catch(error =>{
-              console.log(error);
-              alert('Something error occours ');
-        })
+      axios.get('http://localhost:3000/api/item')
+          .then((res) =>{
+              this.setState({items: res.data});
+              // console.log(res.data);
+          });
+    }
+    handleAdd(item){
+        // console.log(item);
+        //error
+        var items = this.state.items;
+        items.push(item);
+        this.setState({items: item});
+
     }
     render(){
+        console.log("asdsadsadsadsadsadsadsadsadsadsa",this.state);
         return(
-            <div className='container'>
-                    <h3>All Item list</h3>
-                <div className='body-panel'>
-                <h4><Link to="/create" className='btn btn-success ' ><i className="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Book</Link></h4>
+            <div className='jumbotron'>
+                <div className=''>
+                    <NewForm handleAdd = {this.handleAdd}/>
                 </div>
-                <table className='table table-hover'>
+                <table className='table table-striped'>
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Details</th>
                         <th>Created At</th>
@@ -45,7 +49,7 @@ class App extends Component{
                             <td>{item.details}</td>
                             <td>{item.createdAt}</td>
                             <td>
-                                <Link to={`/show/${item._id}`} className='btn btn-outline-info btn-sm'>Details</Link>
+
                             </td>
                         </tr>
                     )}
@@ -55,4 +59,5 @@ class App extends Component{
         )
     }
 }
-export  default App;
+
+export default App;
