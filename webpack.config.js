@@ -1,6 +1,7 @@
 module.exports = options => {
     return {
-        entry: './src',
+        devtool: 'source-map',
+        entry: './src/index.js',
         output: {
             filename: 'bundle.js',
         },
