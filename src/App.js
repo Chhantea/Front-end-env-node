@@ -13,7 +13,8 @@ class App extends Component{
         axios.get('http://localhost:3000/api/user')
             .then(res =>{
                this.setState({users: res.data});
-               console.log("get data", res.data);
+                var strftime = require('strftime');
+               console.log("get data",strftime('%d %B, %Y %H:%M:%S'));
             });
     }
     handleUpdateRecord = (old_user, user) =>{

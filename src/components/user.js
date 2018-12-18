@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
+var strftime = require('strftime');
 
 class User extends Component{
     constructor(){
@@ -19,16 +20,14 @@ class User extends Component{
         e.preventDefault();
         if(this.validRecord()){
             var event_data = {
-                firstName: this.recordValue("firstName"),
-                lastName: this.recordValue("lastName"),
+                first_name: this.recordValue("firstName"),
+                last_name: this.recordValue("lastName"),
                 username: this.recordValue("username"),
                 emailid: this.recordValue("emailid"),
                 phone: this.recordValue("phone"),
                 dob: this.recordValue("dob"),
-                accountType: this.recordValue("accountType"),
-                hash: this.props.user.hash,
-                ratings:this.props.user.ratings,
-                lastLogin:this.props.user.lastLogin
+                accountType: this.recordValue("accountType")
+
             };
             console.log(event_data);
             axios.put('http://localhost:3000/api/user/'+ this.props.user._id, event_data)
@@ -55,6 +54,10 @@ class User extends Component{
         }
     }
     renderForm(){
+        // to convert default value for date type
+        var date = new Date(this.props.user.dob);
+        var newDate = date.toISOString();
+        newDate = newDate.substring(0,10); // select only first 11 string
         return(
             <tr className='animated fadeIn'>
                 <td>{this.props.user._id}</td>
@@ -99,12 +102,14 @@ class User extends Component{
                     />
                 </td>
                 <td>
+
                     <input name="dob"
-                           defaultValue={this.props.user.dob}
+                           defaultValue={newDate}
                            className="form-control"
-                           type="text"
+                           type="date"
                            ref="dob"
                     />
+
                 </td>
                 <td>
                     <input name="accountType"
@@ -138,7 +143,7 @@ class User extends Component{
                 <td>{usr.username} </td>
                 <td>{usr.emailid}</td>
                 <td>{usr.phone}</td>
-                <td>{usr.dob} <span className="badge badge-pill badge-secondary">Secondary</span></td>
+                <td>{strftime('%d/%b/%Y', new Date(usr.dob))} <span className="badge badge-pill badge-secondary">Secondary</span></td>
                 <td>{usr.accountType}  <span className="badge badge-danger">Hot</span></td>
                 <td>
                     <button onClick={this.handleToggle} className='btn btn-outline-info btn-sm'>Edit</button>

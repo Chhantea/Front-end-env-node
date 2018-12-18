@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import User from './user'
+
 class UserTable extends Component{
 
     render() {
@@ -11,6 +12,7 @@ class UserTable extends Component{
                                /> );
         }.bind(this));
         return(
+            <div className="">
             <table className='table table-bordered table-dark table-hover '>
                 <thead className=''>
                 <tr>
@@ -29,6 +31,7 @@ class UserTable extends Component{
                  {users}
                 </tbody>
             </table>
+            </div>
         )
     }
 }
