@@ -2,6 +2,9 @@ module.exports = options => {
     return {
         devtool: 'source-map',
         entry: './src/index.js',
+        devServer: {
+            historyApiFallback: true
+        },
         output: {
             filename: 'bundle.js',
         },
