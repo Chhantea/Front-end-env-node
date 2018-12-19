@@ -1,0 +1,16 @@
+.f-r {
+    float: right;
+}
+
+.f-b {
+    font:bold;
+}
+
+/*font awsome color setting*/
+
+.fa-check:before{
+    color: forestgreen;
+}
+.fa-remove:before, .fa-close:before, .fa-times:before{
+    color: gray;
+}
