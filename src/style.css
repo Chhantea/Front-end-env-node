@@ -14,3 +14,46 @@
 .fa-remove:before, .fa-close:before, .fa-times:before{
     color: gray;
 }
+
+/*nav panel*/
+
+.md-tabs {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    border: 0;
+    padding: .7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: -20px;
+    background-color: #2bbbad;
+    z-index: 1;
+    position: relative;
+    -webkit-border-radius: .25rem;
+    border-radius: .25rem;
+}
+.md-tabs .nav-link {
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+    border: 0;
+    color: #fff;
+}
+.pd-15{
+    padding: 3%;
+}
+
+.container-fluid-8pers {
+    width: 80%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.inline{
+    display: inline;
+}
+
+.fw {
+    font-weight: 200;
+    padding-left: 25px;
+}

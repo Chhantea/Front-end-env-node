@@ -1,0 +1,112 @@
+
+
+
+
+
+
+
+            <div className='container-fluid'>
+                             <div className="row justify-content-center">
+                             <h3 >
+                                 {this.state.user.username}
+                             </h3>
+                            </div>
+                             <Link to="/" className='btn btn-outline-info f-r' ><i className='fa fa-arrow-left'  aria-hidden='true'></i> Back to Item
+                                 List</Link><br/><br/><br/>
+                         <div className='jumbotron'>
+                                         <div className='row justify-content-center'>
+                                                 <div className="col-sm">
+                                                     ID: {this.state.user._id}
+                                                 </div>
+                                                 <div className="col-sm">
+                                                     Name: {this.state.uname? (
+                                                     <div>
+                                                         <input name="username"
+                                                                defaultValue={this.state.user.username}
+                                                                className="form-control"
+                                                                type="text"
+                                                                ref="username"
+                                                         />
+                                                         <a onClick={this.handleSave("username")}> <i className='fa fa-check'  aria-hidden='true'></i></a>
+                                                         <a onClick={this.handleClose("username")}> <i className='fa fa-times'  aria-hidden='true'></i></a>
+
+                                                     </div>) :(
+                                                     <div>
+                                                         {this.state.user.username} <a onClick={this.handleOpen("username")}><i className='fa fa-pencil'  aria-hidden='true'></i></a>
+                                                     </div>) }
+                                                 </div>
+                                                 <div className="col-sm">
+                                                    Phone: {this.state.phone? (
+                                                     <div><input name="phone"
+                                                                 defaultValue={this.state.user.phone}
+                                                                 className="form-control"
+                                                                 type="number"
+                                                                 ref="phone"
+                                                     />
+                                                         <a onClick={this.handleSave("phone")}> <i className='fa fa-check'  aria-hidden='true'></i></a>
+                                                         <a onClick={this.handleClose("phone")}> <i className='fa fa-times'  aria-hidden='true'></i></a>
+                                                     </div>) :(
+                                                     <div>
+                                                         {this.state.user.phone} <a onClick={this.handleOpen("phone")}><i className='fa fa-pencil'  aria-hidden='true'></i></a>
+                                                     </div>) }
+                                                 </div>
+                                     </div>
+                             <hr/>
+                             <div className='row '>
+                                 <div className="col-sm">
+                                     First Name: {this.state.firstname? (
+                                     <div>
+                                         <input name="First Name"
+                                                defaultValue={this.state.user.firstName}
+                                                className="form-control"
+                                                type="text"
+                                                ref="firstName"
+                                         />
+                                         <a onClick={this.handleSave("firstname")}> <i className='fa fa-check'  aria-hidden='true'></i></a>
+                                         <a onClick={this.handleClose("firstname")}> <i className='fa fa-times'  aria-hidden='true'></i></a>
+
+                                     </div>) :(
+                                     <div>
+                                         {this.state.user.firstName} <a onClick={this.handleOpen("firstname")}><i className='fa fa-pencil'  aria-hidden='true'></i></a>
+                                     </div>) }
+                                 </div>
+                                 <div className="col-sm">
+                                     Last Name: {this.state.lastname? (
+                                     <div>
+                                         <input name="lastname"
+                                                defaultValue={this.state.user.lastName}
+                                                className="form-control"
+                                                type="text"
+                                                ref="lastName"
+                                         />
+                                         <a onClick={this.handleSave("lastname")}> <i className='fa fa-check'  aria-hidden='true'></i></a>
+                                         <a onClick={this.handleClose("lastname")}> <i className='fa fa-times'  aria-hidden='true'></i></a>
+
+                                     </div>) :(
+                                     <div>
+                                         {this.state.user.lastName} <a onClick={this.handleOpen("lastname")}><i className='fa fa-pencil'  aria-hidden='true'></i></a>
+                                     </div>) }
+                                 </div>
+                                 <div className="col-sm">
+                                     Email ID: {this.state.email? (
+                                     <div><input name="email"
+                                                 defaultValue={this.state.user.emailid}
+                                                 className="form-control"
+                                                 type="text"
+                                                 ref="emailid"
+                                     />
+                                         <a onClick={this.handleSave("email")}> <i className='fa fa-check'  aria-hidden='true'></i></a>
+                                         <a onClick={this.handleClose("email")}> <i className='fa fa-times'  aria-hidden='true'></i></a>
+                                     </div>) :(
+                                     <div>
+                                         {this.state.user.emailid} <a onClick={this.handleOpen("email")}><i className='fa fa-pencil'  aria-hidden='true'></i></a>
+                                     </div>) }
+                                 </div>
+                             </div>
+                               {/*end row*/}
+                               <hr/>
+                               <div className="row">
+                                  <QandA getData={this.state}/>
+                               </div>
+                         </div>
+                         </div>
