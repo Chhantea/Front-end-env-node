@@ -17,7 +17,11 @@ class Details extends Component{
              },
              edit: false,
              id: this.props.match.params.id,
-             date: ''
+             date: '',
+             question1:'',
+             question2: '',
+             answer1: '',
+             answer2: ''
          }
      };
     recordValue = (field) =>{
@@ -26,9 +30,14 @@ class Details extends Component{
    componentDidMount(){
          axios.get("http://localhost:3000/api/user/" + this.state.id)
              .then(res =>{
-                 this.setState({user: res.data});
+                 this.setState({
+                     user: res.data,
+                     question1: res.data.secret_questions.question1,
+                     question2: res.data.secret_questions.question2,
+                     answer1: res.data.secret_answers.answer1,
+                     answer2: res.data.secret_answers.answer2})
              }).catch(error =>{
-                 alert("Cannot Find target", error.message);
+                 alert("Error: Cannot Get Data from server!!")
          });
    };
     validRecord(){
@@ -52,9 +61,7 @@ class Details extends Component{
                 phone: this.recordValue("phone"),
                 dob: this.recordValue("dob"),
                 accountType: this.recordValue("accountType")
-
             };
-            console.log(event_data);
             axios.put('http://localhost:3000/api/user/'+ this.state.id, event_data)
                 .then(res =>{
                     this.setState({user: res.data});
@@ -103,7 +110,7 @@ class Details extends Component{
                             aria-controls="contact" aria-selected="false">Contact</a>
                      </li>
                  </ul>
-                 <div className="tab-content card pt-5 pd-15" id="myTabContent">
+                 <div className="tab-content card pt-5 pd-15 " id="myTabContent">
                      <br/>
                      <div className="tab-pane fade show active" id="Info" role="tabpanel" aria-labelledby="Info-tab">
                          <div className='row justify-content-center'>
@@ -243,7 +250,7 @@ class Details extends Component{
                                      </div>
                                  ):(
                                      <div>
-                                         <p className="inline">  First Question: </p> <p className="inline fw">{this.state.user.secret_questions.question1}</p>
+                                         <p className="inline">  First Question: </p> <p className="inline fw">{this.state.question1}</p>
                                      </div>
                                  )}
                              </div>
@@ -258,7 +265,7 @@ class Details extends Component{
                                      </div>
                                  ):(
                                      <div>
-                                         <p className="inline">  First Answer: </p> <p className="inline fw">{this.state.user.secret_answers.answer1}</p>
+                                         <p className="inline">  First Answer: </p> <p className="inline fw">{this.state.answer1}</p>
                                      </div>
                                  )}
                              </div>
@@ -274,7 +281,7 @@ class Details extends Component{
                                       </div>
                                   ):(
                                       <div>
-                                          <p className="inline">  First Question: </p> <p className="inline fw">{this.state.user.secret_questions.question2}</p>
+                                          <p className="inline">  Second Question: </p> <p className="inline fw">{this.state.question2}</p>
                                       </div>
                                   )}
                               </div>
@@ -282,7 +289,7 @@ class Details extends Component{
                           </div>
                          {/*end row*/}
                             <br/>
-                         <div className="row justify-content-end">
+                         <div className="row">
                              <div className="col-5">
                                  {this.state.edit?(
                                      <div className="">
@@ -290,7 +297,7 @@ class Details extends Component{
                                      </div>
                                  ):(
                                      <div>
-                                         <p className="inline">  First Answer: </p> <p className="inline fw">{this.state.user.secret_answers.answer2}</p>
+                                         <p className="inline">  Second Answer: </p> <p className="inline fw">{this.state.answer2}</p>
                                      </div>
                                  )}
                              </div>

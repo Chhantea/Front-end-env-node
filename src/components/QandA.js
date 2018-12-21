@@ -18,7 +18,7 @@ class QandA extends Component{
     //         })
     // }
     render(){
-        console.log(this.state);
+        // console.log(this.state);
         return(
             <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><p>Etsy
                 mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro

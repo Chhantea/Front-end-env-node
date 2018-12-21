@@ -15,6 +15,7 @@
 </head>
 <body>
 <br><br>
+
 <div class="content">
     <div id='root' >
     </div>
@@ -26,7 +27,25 @@
 <script src="/mdbootstrap/js/popper.min.js"></script>
 <script src="mdbootstrap/js/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript"></script>
+<script type="text/javascript">
 
+    var $root = $('#root');
+    $root.on('keydown', '#textarea', function(e) {
+       var key = e.which;
+           var $el = $(this);
+           console.log($el[0].style.height);
+           var t=$el[0].scrollHeight + 'px';
+           setTimeout(function () {
+                if($el[0].style.height == t) {
+                    $el.css({"height": "auto"});
+                    // for box-sizing other than "content-box" use:
+                    // el.style.cssText = '-moz-box-sizing:content-box';
+
+                    $el.css('height', $el[0].scrollHeight + 'px');
+                }
+           }, 0);
+
+    });
+</script>
 </body>
 </html>
